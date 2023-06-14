@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Data Display</title>
+</head>
+<body>
+  <h1>Real-time Data Display</h1>
+  <ul id="data-list"></ul>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('newData', (data) => {
+      const dataList = document.getElementById('data-list');
+      const listItem = document.createElement('li');
+      listItem.textContent = JSON.stringify(data);
+      dataList.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>
